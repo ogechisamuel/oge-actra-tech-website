@@ -1,0 +1,3 @@
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
+export default function NotFound(){return <main className="min-h-[70vh] px-5 py-32"><div className="mx-auto max-w-4xl text-center"><p className="eyebrow">404 / PAGE NOT FOUND</p><h1 className="mt-5 text-6xl font-black tracking-tight md:text-8xl">This page <span className="gradient-text">doesn&apos;t exist.</span></h1><p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-silver">The page may have moved, or the address may be incorrect. Return to the OGE-ACTRA TECH technology ecosystem.</p><Link href="/" className="btn-primary mt-8 px-7 py-4"><ArrowLeft size={17}/> Back home</Link></div></main>}
