@@ -1,0 +1,15 @@
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { products } from '@/data/products';
+import { Reveal } from '@/components/motion';
+
+export const metadata: Metadata = { title: 'Products', description: 'Explore technology products developed by OGE-ACTRA TECH.' };
+
+export default function Products(){
+  return <>
+    <section className="portfolio-hero"><div className="portfolio-hero-grid" /><div className="page-shell relative"><div className="portfolio-kicker"><span className="hero-brand-dot"/> OGE-ACTRA TECH / PRODUCT PORTFOLIO</div><p className="eyebrow mt-7">Products</p><h1 className="mt-4 max-w-5xl text-5xl font-black tracking-[-.055em] md:text-7xl">Four products. <span className="gradient-text">One technology foundation.</span></h1><p className="mt-6 max-w-3xl text-xl leading-9 text-silver">Distinct products, different markets, shared engineering ambition. Explore the digital businesses being built under OGE-ACTRA TECH.</p><div className="mt-9 flex flex-wrap gap-3 text-xs font-bold uppercase tracking-[.18em] text-silver"><span className="portfolio-stat">01 / AI</span><span className="portfolio-stat">02 / EDUCATION</span><span className="portfolio-stat">03 / COMMERCE</span><span className="portfolio-stat">04 / SOCIAL ENTERTAINMENT</span></div></div></section>
+    <section className="px-5 pb-28"><div className="mx-auto max-w-7xl space-y-7">{products.map((p,i)=><Reveal key={p.slug} delay={i*.05}><Link href={`/products/${p.slug}`} className={`portfolio-product portfolio-${p.accent} group ${i===0?'portfolio-product-featured':''}`}><div className="portfolio-product-media"><Image src={p.image} alt={`${p.name} product visual`} fill sizes="(max-width: 1024px) 100vw, 52vw" className="object-cover transition duration-700 group-hover:scale-[1.035]"/><div className="portfolio-product-shade"/><span className="portfolio-product-no">0{i+1}</span><span className="status-pill absolute right-5 top-5">{p.status}</span></div><div className="portfolio-product-copy"><p className="eyebrow">{p.eyebrow}</p><h2 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">{p.name}</h2><p className="mt-4 max-w-xl leading-8 text-silver">{p.description}</p><div className="mt-6 flex flex-wrap gap-2">{p.features.slice(0,5).map(f=><span key={f} className="feature-chip">{f}</span>)}</div><span className="mt-8 inline-flex items-center gap-2 font-bold group-hover:text-cyan">Explore product <ArrowUpRight size={17}/></span></div></Link></Reveal>)}</div><div className="mx-auto mt-16 max-w-7xl rounded-[2rem] border border-white/10 bg-white/[.025] p-8 md:flex md:items-center md:justify-between md:p-10"><div><p className="eyebrow">Build with us</p><h2 className="mt-3 text-3xl font-black">Have a technology idea?</h2><p className="mt-2 text-silver">Start a conversation with OGE-ACTRA TECH.</p></div><Link href="/contact" className="btn-primary mt-6 px-7 py-4 md:mt-0">Start a conversation <ArrowRight size={17}/></Link></div></section>
+  </>;
+}
